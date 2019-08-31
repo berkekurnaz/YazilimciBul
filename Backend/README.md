@@ -7,6 +7,7 @@ Bütün Endpoint'ler İçin `Headers` altında `apikey` tanımlaması yapılmak 
 
 ### Developers
 **Developer Model:** name, surname, job, description, photo, mail, phone, country, city, address, username, password, isConfirm, createdDate, lastLoginDate. <br/>
+
 Route| Http Verb | Post Body | Açıklama
 :--- | :---: | :---: | :---:
 /developers | `GET` | Empty | Bütün Yazılımcıları Getirmek
@@ -17,6 +18,7 @@ Route| Http Verb | Post Body | Açıklama
 
 ### Managers
 **Manager Model:** name, surname, description, username, password, mail, phone, apikey. <br/>
+
 Route| Http Verb | Post Body | Açıklama
 :--- | :---: | :---: | :---:
 /managers | `GET` | Empty | Bütün Yöneticileri Getirmek
@@ -27,6 +29,7 @@ Route| Http Verb | Post Body | Açıklama
 
 ### Educations
 **Education Model:** developer_id, schoolName, department, degree, startYear, endYear, description. <br/>
+
 Route| Http Verb | Post Body | Açıklama
 :--- | :---: | :---: | :---:
 /educations | `GET` | Empty | Bütün Eğitimleri Getirmek
@@ -35,3 +38,15 @@ Route| Http Verb | Post Body | Açıklama
 /educations| `POST` | Education Model | Yeni Eğitim Oluşturmak
 /educations/:id | `PUT` | Education Model | Eğitim Güncellemek
 /educations/:id | `DELETE` | Education Model | Eğitim Silmek
+
+### Projects
+**Project Model:** developer_id, projectName, description, month, year, projectUrl, projectPhoto. <br/>
+
+Route| Http Verb | Post Body | Açıklama
+:--- | :---: | :---: | :---:
+/projects | `GET` | Empty | Bütün Projeleri Getirmek
+/projects/:id | `GET` | Empty | Belirli Bir Yazılımcının Projelerini Getirmek
+/projects/detay/:id | `GET` | Empty | Tek Bir Proje Getirmek
+/projects| `POST` | Project Model | Yeni Proje Oluşturmak
+/projects/:id | `PUT` | Project Model | Proje Güncellemek
+/projects/:id | `DELETE` | Project Model | Proje Silmek
