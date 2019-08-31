@@ -4,75 +4,118 @@ var router = express.Router();
 /* Modeli Ekleme */
 var Manager = require("../models/Manager");
 
+/* Api Check Ekleme */
+var apiCheck = require("../api_check/apiCheck");
+
 /* Manager Listeleme Islemi */
-router.get('/', function(req, res, next) {
-  
-    Manager.find().then((managers) => {
-      res.json(managers);
+router.get('/', function (req, res, next) {
+
+    var apikey = req.headers.apikey;
+
+    apiCheck(apikey).then((data) => {
+        
+        Manager.find().then((managers) => {
+            res.json(managers);
+        }).catch((err) => {
+            res.json(err);
+        });
+
     }).catch((err) => {
-      res.json(err);
+        res.json(err);
     });
-  
+
+
 });
 
 /* Manager Bulma Islemi */
-router.get('/:id', function(req, res, next) {
-  
+router.get('/:id', function (req, res, next) {
+
     var id = req.params.id;
-    Manager.findById(id).then((manager) => {
-      res.json(manager);
+    var apikey = req.headers.apikey;
+
+    apiCheck(apikey).then((data) => {
+        
+        Manager.findById(id).then((manager) => {
+            res.json(manager);
+        }).catch((err) => {
+            res.json(err);
+        });
+
     }).catch((err) => {
-      res.json(err);
+        res.json(err);
     });
-  
+
 });
 
 /* Manager Ekleme Islemi */
-router.post("/", function(req, res, next){
- 
-    new Manager({
-        name: req.body.name,
-        surname: req.body.surname,
-        description: req.body.description,
+router.post("/", function (req, res, next) {
 
-        mail: req.body.mail,
-        phone: req.body.phone,
+    var apikey = req.headers.apikey;
 
-        username: req.body.username,
-        password: req.body.password,
+    apiCheck(apikey).then((data) => {
+        
+        new Manager({
+            name: req.body.name,
+            surname: req.body.surname,
+            description: req.body.description,
 
-        apikey: req.body.apikey,
-    }).save().then(() => {
-        res.json("Kaydetme İşlemi Başarılı.");
+            mail: req.body.mail,
+            phone: req.body.phone,
+
+            username: req.body.username,
+            password: req.body.password,
+
+            apikey: req.body.apikey,
+        }).save().then(() => {
+            res.json("Kaydetme İşlemi Başarılı.");
+        }).catch((err) => {
+            res.json("Kaydetme İşleminde Hata Oluştu.");
+        });
+
     }).catch((err) => {
-        res.json("Kaydetme İşleminde Hata Oluştu.");
+        res.json(err);
     });
-  
+
 });
 
 /* Manager Guncelleme Islemi */
-router.put("/:id", function(req, res, next){
-  
-    var id = req.params.id;
+router.put("/:id", function (req, res, next) {
 
-    Manager.findByIdAndUpdate({"_id": id}, req.body).then((newManager) => {
-        res.json("Güncelleme İşlemi Başarılı.");
+    var id = req.params.id;
+    var apikey = req.headers.apikey;
+
+    apiCheck(apikey).then((data) => {
+        
+        Manager.findByIdAndUpdate({ "_id": id }, req.body).then((newManager) => {
+            res.json("Güncelleme İşlemi Başarılı.");
+        }).catch((err) => {
+            res.json("Güncelleme İşleminde Hata Oluştu.");
+        });
+
     }).catch((err) => {
-        res.json("Güncelleme İşleminde Hata Oluştu.");
+        res.json(err);
     });
-  
+
 });
 
 /* Manager Silme Islemi */
-router.delete("/:id", function(req, res, next){
-  
+router.delete("/:id", function (req, res, next) {
+
     var id = req.params.id;
-    Manager.findByIdAndRemove(id).then(() => {
-        res.json("Silme İşlemi Başarılı.");
+    var apikey = req.headers.apikey;
+
+    apiCheck(apikey).then((data) => {
+        
+        Manager.findByIdAndRemove(id).then(() => {
+            res.json("Silme İşlemi Başarılı.");
+        }).catch((err) => {
+            res.json("Silme İşleminde Hata Oluştu.");
+        });
+
     }).catch((err) => {
-        res.json("Silme İşleminde Hata Oluştu.");
+        res.json(err);
     });
-  
+
 });
 
 module.exports = router;
