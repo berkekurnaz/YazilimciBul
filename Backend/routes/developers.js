@@ -67,6 +67,13 @@ router.post("/", function (req, res, next) {
             city: req.body.city,
             address: req.body.address,
 
+            mediaWebsite: req.body.mediaWebsite,
+            mediaGithub: req.body.mediaGithub,
+            mediaLinkedin: req.body.mediaLinkedin,
+            mediaMedium: req.body.mediaMedium,
+
+            developerSkills: req.body.developerSkills,
+
             username: req.body.username,
             password: req.body.password,
             isConfirm: req.body.isConfirm,

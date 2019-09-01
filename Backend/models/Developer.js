@@ -16,6 +16,13 @@ var developerSchema = new Schema({
     city: String,
     address: String,
 
+    mediaWebsite: String,
+    mediaGithub: String,
+    mediaLinkedin: String,
+    mediaMedium: String,
+
+    developerSkills: String,
+
     username: String,
     password: String,
     isConfirm: Boolean,
