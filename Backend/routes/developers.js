@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose')
 
 /* Modeli Ekleme */
 var Developer = require("../models/Developer");
@@ -24,6 +25,58 @@ router.get('/', function (req, res, next) {
         res.json(err);
     });
 
+});
+
+/* TEST */
+router.get('/mytest/:id', (req, res) => {
+
+    var id = req.params.id;
+    
+	const promise = Developer.aggregate([
+        {
+            $match: {
+                _id: mongoose.Types.ObjectId(id)
+            }
+        },
+		{
+			$lookup: {
+				from: 'jobs',
+				localField: '_id',
+				foreignField: 'developer_id',
+				as: 'jobs'
+            }
+        },
+        {
+            $lookup: {
+				from: 'educations',
+				localField: '_id',
+				foreignField: 'developer_id',
+				as: 'educations'
+			}
+		},
+        {
+            $lookup: {
+				from: 'projects',
+				localField: '_id',
+				foreignField: 'developer_id',
+				as: 'projects'
+			}
+        },
+        {
+            $lookup: {
+				from: 'awards',
+				localField: '_id',
+				foreignField: 'developer_id',
+				as: 'awards'
+			}
+		}
+	]);
+
+	promise.then((data) => {
+		res.json(data);
+	}).catch((err) => {
+		res.json(err);
+	})
 });
 
 /* Developer Bulma Islemi */
