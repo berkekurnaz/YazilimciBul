@@ -12,6 +12,7 @@ var managersRouter = require('./routes/managers');
 var educationsRouter = require('./routes/educations');
 var projectsRouter = require('./routes/projects');
 var jobsRouter = require('./routes/jobs');
+var awardsRouter = require('./routes/awards');
 
 var cors = require("cors");
 
@@ -38,6 +39,7 @@ app.use('/managers', managersRouter);
 app.use('/educations', educationsRouter);
 app.use('/projects', projectsRouter);
 app.use('/jobs', jobsRouter);
+app.use('/awards', awardsRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
