@@ -50,3 +50,15 @@ Route| Http Verb | Post Body | Açıklama
 /projects| `POST` | Project Model | Yeni Proje Oluşturmak
 /projects/:id | `PUT` | Project Model | Proje Güncellemek
 /projects/:id | `DELETE` | Project Model | Proje Silmek
+
+### Jobs
+**Job Model:** developer_id, company, title, description, startYear, endYear. <br/>
+
+Route| Http Verb | Post Body | Açıklama
+:--- | :---: | :---: | :---:
+/jobs | `GET` | Empty | Bütün İşleri Getirmek
+/jobs/:id | `GET` | Empty | Belirli Bir Yazılımcının İşlerini Getirmek
+/jobs/detay/:id | `GET` | Empty | Tek Bir İş Getirmek
+/jobs| `POST` | Job Model | Yeni İş Oluşturmak
+/jobs/:id | `PUT` | Job Model | İş Güncellemek
+/jobs/:id | `DELETE` | Job Model | İş Silmek
