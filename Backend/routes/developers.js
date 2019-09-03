@@ -126,7 +126,8 @@ router.post("/", function (req, res, next) {
             mediaMedium: req.body.mediaMedium,
 
             developerSkills: req.body.developerSkills,
-
+            developerAreas: req.body.developerAreas,
+            
             username: req.body.username,
             password: req.body.password,
             isConfirm: req.body.isConfirm,

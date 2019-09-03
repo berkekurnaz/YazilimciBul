@@ -6,7 +6,7 @@ Burada Apiye Ait Dökümanlar Bulunmaktadır. <br/>
 Bütün Endpoint'ler İçin `Headers` altında `apikey` tanımlaması yapılmak zorundadır. <br/>
 
 ### Developers
-**Developer Model:** name, surname, job, description, photo, mail, phone, country, city, address, mediaWebsite, mediaGithub, mediaLinkedin, mediaMedium, developerSkills, username, password, isConfirm, createdDate, lastLoginDate. <br/>
+**Developer Model:** name, surname, job, description, photo, mail, phone, country, city, address, mediaWebsite, mediaGithub, mediaLinkedin, mediaMedium, developerSkills, developerAreas,username, password, isConfirm, createdDate, lastLoginDate. <br/>
 
 Route| Http Verb | Post Body | Açıklama
 :--- | :---: | :---: | :---:

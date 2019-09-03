@@ -22,6 +22,7 @@ var developerSchema = new Schema({
     mediaMedium: String,
 
     developerSkills: String,
+    developerAreas: String,
 
     username: String,
     password: String,
