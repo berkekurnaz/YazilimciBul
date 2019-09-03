@@ -103,7 +103,7 @@ router.post("/", upload.single('file'), function (req, res, next) {
          /* Fotograf Null İse Default Resim Atama */
          var myFileName = "";
          if (!req.file) {
-             myFileName = myWebsiteData.my_website_name + "images/defaultproject.png";
+             myFileName = myWebsiteData.my_website_name + "projectimages/defaultproject.png";
          } else {
              myFileName = myWebsiteData.my_website_name + 'projectimages/' + req.file.filename;
          }
