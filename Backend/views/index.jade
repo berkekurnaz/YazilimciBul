@@ -1,5 +1,377 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
+doctype html
+html
+  head
+    // Standard Meta
+    meta(charset='utf-8')
+    |     
+    meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1.0, maximum-scale=1.0')
+    // Site Properties
+    title Yazılımcı Bul Api
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com/dist/components/reset.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/site.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/container.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/grid.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/header.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/image.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/menu.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/components/card.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/divider.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/dropdown.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/segment.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/button.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/list.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/icon.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/sidebar.css')
+    |     
+    link(rel='stylesheet', type='text/css', href='https://semantic-ui.com//dist/components/transition.css')
+    |     
+    style(type='text/css').
+      .hidden.menu {
+      display: none;
+      }
+      .masthead.segment {
+      min-height: 700px;
+      padding: 1em 0em;
+      }
+      .masthead .logo.item img {
+      margin-right: 1em;
+      }
+      .masthead .ui.menu .ui.button {
+      margin-left: 0.5em;
+      }
+      .masthead h1.ui.header {
+      margin-top: 3em;
+      margin-bottom: 0em;
+      font-size: 4em;
+      font-weight: normal;
+      }
+      .masthead h2 {
+      font-size: 1.7em;
+      font-weight: normal;
+      }
+      .ui.vertical.stripe {
+      padding: 8em 0em;
+      }
+      .ui.vertical.stripe h3 {
+      font-size: 2em;
+      }
+      .ui.vertical.stripe .button+h3,
+      .ui.vertical.stripe p+h3 {
+      margin-top: 3em;
+      }
+      .ui.vertical.stripe .floated.image {
+      clear: both;
+      }
+      .ui.vertical.stripe p {
+      font-size: 1.33em;
+      }
+      .ui.vertical.stripe .horizontal.divider {
+      margin: 3em 0em;
+      }
+      .quote.stripe.segment {
+      padding: 0em;
+      }
+      .quote.stripe.segment .grid .column {
+      padding-top: 5em;
+      padding-bottom: 5em;
+      }
+      .footer.segment {
+      padding: 5em 0em;
+      }
+      .secondary.pointing.menu .toc.item {
+      display: none;
+      }
+      @media only screen and (max-width: 700px) {
+      .ui.fixed.menu {
+      display: none !important;
+      }
+      .secondary.pointing.menu .item,
+      .secondary.pointing.menu .menu {
+      display: none;
+      }
+      .secondary.pointing.menu .toc.item {
+      display: block;
+      }
+      .masthead.segment {
+      min-height: 350px;
+      }
+      .masthead h1.ui.header {
+      font-size: 2em;
+      margin-top: 1.5em;
+      }
+      .masthead h2 {
+      margin-top: 0.5em;
+      font-size: 1.5em;
+      }
+      }
+    |     
+    script(src='https://semantic-ui.com/examples/assets/library/jquery.min.js')
+    |     
+    script(src='https://semantic-ui.com//dist/components/visibility.js')
+    |     
+    script(src='https://semantic-ui.com//dist/components/sidebar.js')
+    |     
+    script(src='https://semantic-ui.com//dist/components/transition.js')
+    |     
+    script.
+      $(document)
+      .ready(function () {
+      // fix menu when passed
+      $('.masthead')
+      .visibility({
+      once: false,
+      onBottomPassed: function () {
+      $('.fixed.menu').transition('fade in');
+      },
+      onBottomPassedReverse: function () {
+      $('.fixed.menu').transition('fade out');
+      }
+      })
+      ;
+      // create sidebar and attach to menu open
+      $('.ui.sidebar')
+      .sidebar('attach events', '.toc.item')
+      ;
+      })
+      ;
+  body
+    .ui.large.top.fixed.hidden.menu
+      .ui.container
+        a.active.item(href='#home') Anasayfa
+        |             
+        a.item(href='#document') D&ouml;k&uuml;manlar
+        |             
+        a.item(href='#about') Hakk&imath;m&imath;zda
+        |             
+        a.item(href='#team') Tak&imath;m
+        |             
+        .right.menu
+          .item
+            a.ui.button &Uuml;ye Ol
+          |                 
+          .item
+            a.ui.primary.button Giri&scedil; Yap
+    |     
+    .ui.vertical.inverted.sidebar.menu
+      a.active.item(href='#home') Anasayfa
+      |         
+      a.item(href='#document') D&ouml;k&uuml;manlar
+      |         
+      a.item(href='#about') Hakk&imath;m&imath;zda
+      |         
+      a.item(href='#team') Tak&imath;m
+      |         
+      a.item &Uuml;ye Ol
+      |         
+      a.item Giri&scedil; Yap
+    |     
+    .pusher
+      .ui.inverted.vertical.masthead.center.aligned.segment
+        .ui.container
+          .ui.large.secondary.inverted.pointing.menu
+            a.toc.item
+              i.sidebar.icon
+            |                     
+            a.active.item(href='#home') Anasayfa
+            |                     
+            a.item(href='#document') Dökümanlar
+            |                     
+            a.item(href='#about') Hakkımızda
+            |                     
+            a.item(href='#team') Takım
+            |                     
+            .right.item
+              a.ui.inverted.button Üye Ol
+              |                         
+              a.ui.inverted.button Giriş Yap
+        |             
+        #home.ui.text.container
+          h1.ui.inverted.header
+            | Yaz&imath;l&imath;mc&imath; Bul
+           
+          h2 Yaz&imath;l&imath;mc&imath; Bul Api D&ouml;k&uuml;man Sayfas&imath;
+          a.ui.huge.primary.button(href='/docs') Hızlıca Öğren 
+            i.right.arrow.icon                
+      #document.ui.vertical.stripe.segment
+        .ui.middle.aligned.stackable.grid.container
+          .row
+            .eight.wide.column
+              h3.ui.header Yaz&imath;l&imath;mc&imath; Bul Api D&ouml;k&uuml;manlar&imath;
+              |                         
+              p
+                | Burada Yaz&imath;l&imath;mc&imath;Bul.com Sitesine Ait Apilerin Kullan&imath;mlar&imath; Hakk&imath;nda Bilgiler Verilmektedir.
+              |                         
+              p Apileri Kullanabilmeniz &Idot;&ccedil;in Bir ApiKey Sahibi Olmak Zorundas&imath;n&imath;z.
+              |                         
+              h3.ui.header D&ouml;k&uuml;manlar&imath; &Idot;ncele
+              |                         
+              p
+                | Api&apos;yi Nas&imath;l Kullanabilece&gbreve;inizi Ve Api &Idot;&ccedil;erisinde Bulunan B&uuml;t&uuml;n Endpointleri A&scedil;a&gbreve;&imath;daki
+                | Butona T&imath;klayarak &Idot;nceleyebilirsiniz.
+            |                     
+            .six.wide.right.floated.column
+              img.ui.large.bordered.rounded.image(src='https://semantic-ui.com/examples/assets/images/wireframe/white-image.png')
+          |                 
+          .row
+            .center.aligned.column
+              a.ui.huge.button Api &Idot;ncele
+      |         
+      .ui.vertical.stripe.quote.segment
+        .ui.equal.width.stackable.internally.celled.grid
+          .center.aligned.row
+            .column
+              h3 Api Key Nedir ?
+              |                         
+              p
+                | Apileri Kullanabilmeniz &Idot;&ccedil;in Headers Alt&imath;nda Tan&imath;mlamak Zorunda Oldu&gbreve;unuz De&gbreve;erdir.
+            |                     
+            .column
+              h3 &quot;Yaz&imath;l&imath;mc&imath;lar &Idot;le Yaz&imath;l&imath;mc&imath; Arayanlar&imath; Bulu&scedil;turuyoruz.&quot;
+              |                         
+              p
+                img.ui.avatar.image(src='https://semantic-ui.com/examples/assets/images/avatar/nan.jpg')
+                |                             
+                b Berke Kurnaz
+                |  Yaz&imath;l&imath;mc&imath;Bul Kurucu
+      |         
+      #about.ui.vertical.stripe.segment
+        .ui.text.container
+          h3.ui.header Yaz&imath;l&imath;mc&imath; Bul Nedir ?
+          |                 
+          p
+            | Instead of focusing on content creation and hard work, we have learned how to master the art of
+            | doing nothing by providing massive amounts of whitespace and generic content that can seem massive,
+            | monolithic and worth your attention.
+          |                 
+          h3.ui.header Sosyal Medya Hesaplar&imath;m&imath;z
+          |                 
+          p Sosyal Medyada Bizi Takip Edebilirsin.
+          |                 
+          .ui.four.buttons
+            a.ui.basic.green.button Instagram
+            |                         
+            a.ui.basic.red.button Twitter
+            |                         
+            a.ui.basic.green.button Github
+            |                         
+            a.ui.basic.red.button Website
+      |         
+      #team.ui.vertical.stripe.segment
+        .ui.container
+          center
+            h1 Tak&imath;m
+          |                 
+          hr
+          |                 
+          .ui.grid
+            .three.column.row
+              .column
+                .ui.card
+                  .image
+                    img(src='https://semantic-ui.com/images/avatar2/large/kristy.png')
+                  |                                 
+                  .content
+                    a.header Berke Kurnaz
+                    |                                     
+                    .meta
+                      span.date 2019 Y&imath;l&imath;nda Kat&imath;ld&imath;
+                    |                                     
+                    .description
+                      | Backend Developer
+                  |                                 
+                  .extra.content
+                    .ui.two.buttons
+                      a.ui.basic.green.button Github
+                      |                                         
+                      a.ui.basic.red.button Website
+              |                         
+              .column
+                .ui.card
+                  .image
+                    img(src='https://semantic-ui.com/images/avatar2/large/kristy.png')
+                  |                                 
+                  .content
+                    a.header Berke Kurnaz
+                    |                                     
+                    .meta
+                      span.date 2019 Y&imath;l&imath;nda Kat&imath;ld&imath;
+                    |                                     
+                    .description
+                      | Backend Developer
+                  |                                 
+                  .extra.content
+                    .ui.two.buttons
+                      a.ui.basic.green.button Github
+                      |                                         
+                      a.ui.basic.red.button Website
+              |                         
+              .column
+                .ui.card
+                  .image
+                    img(src='https://semantic-ui.com/images/avatar2/large/kristy.png')
+                  |                                 
+                  .content
+                    a.header Berke Kurnaz
+                    |                                     
+                    .meta
+                      span.date 2019 Y&imath;l&imath;nda Kat&imath;ld&imath;
+                    |                                     
+                    .description
+                      | Backend Developer
+                  |                                 
+                  .extra.content
+                    .ui.two.buttons
+                      a.ui.basic.green.button Github
+                      |                                         
+                      a.ui.basic.red.button Website
+      |         
+      .ui.inverted.vertical.footer.segment
+        .ui.container
+          .ui.stackable.inverted.divided.equal.height.stackable.grid
+            .three.wide.column
+              h4.ui.inverted.header Sayfalar
+              |                         
+              .ui.inverted.link.list
+                a.item(href='#') Anasayfa
+                |                             
+                a.item(href='#') D&ouml;k&uuml;manlar
+                |                             
+                a.item(href='#') Hakk&imath;m&imath;zda
+                |                             
+                a.item(href='#') Tak&imath;m
+            |                     
+            .three.wide.column
+              h4.ui.inverted.header Servisler
+              |                         
+              .ui.inverted.link.list
+                a.item(href='#') Api
+                |                             
+                a.item(href='#') Kaynak Kodlar
+                |                             
+                a.item(href='#') ApiKey Edin
+                |                             
+                a.item(href='#') &Idot;leti&scedil;im
+            |                     
+            .seven.wide.column
+              h4.ui.inverted.header Yaz&imath;l&imath;mc&imath; Bul
+              |                         
+              p
+                | Yaz&imath;l&imath;mc&imath;lar&imath; Ve Yaz&imath;l&imath;mc&imath; Arayanlar&imath; Ortak Bir Noktada Toplamay&imath; Ama&ccedil;layan G&ouml;n&uuml;ll&uuml;
+                | Platform.

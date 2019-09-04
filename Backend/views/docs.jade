@@ -1,0 +1,59 @@
+doctype html(lang='en')
+head
+    meta(charset='utf-8')
+    |   
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    |   
+    meta(name='description', content='')
+    |   
+    meta(name='author', content='')
+    |   
+    title Simple Sidebar - Start Bootstrap Template
+    |   
+    link(href='https://blackrockdigital.github.io/startbootstrap-simple-sidebar/vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
+    |   
+    link(href='https://blackrockdigital.github.io/startbootstrap-simple-sidebar/css/simple-sidebar.css', rel='stylesheet')
+  body
+    #wrapper.d-flex
+      #sidebar-wrapper.bg-light.border-right
+        .sidebar-heading Yazılımcı Bul Api
+        |       
+        .list-group.list-group-flush
+          a.list-group-item.list-group-item-action.bg-light(href='/docs/usage') Kullanım
+          |         
+          a.list-group-item.list-group-item-action.bg-light(href='/docs/developer') Yazılımcılar Api
+          |         
+          a.list-group-item.list-group-item-action.bg-light(href='/docs/project') Projeler Api
+          |         
+          a.list-group-item.list-group-item-action.bg-light(href='/docs/education') Eğitim Api
+          |         
+          a.list-group-item.list-group-item-action.bg-light(href='/docs/award') Ödüller Api
+          |         
+          a.list-group-item.list-group-item-action.bg-light(href='/docs/job') İşler Api
+          |         
+          a.list-group-item.list-group-item-action.bg-light(href='/docs/manager') Yöneticiler Api
+          |         
+          a.list-group-item.list-group-item-action.bg-light(href='/docs/source') Kaynak Kodlar
+          |         
+          a.list-group-item.list-group-item-action.bg-light(href='/docs/contact') İletişim
+      |     
+      #page-content-wrapper
+        nav.navbar.navbar-expand-lg.navbar-light.bg-light.border-bottom
+          button#menu-toggle.btn.btn-dark Menü
+          |         
+          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+          |         
+        |       
+        .container-fluid
+          block content
+    |   
+    script(src='https://blackrockdigital.github.io/startbootstrap-simple-sidebar/vendor/jquery/jquery.min.js')
+    |   
+    script(src='https://blackrockdigital.github.io/startbootstrap-simple-sidebar/vendor/bootstrap/js/bootstrap.bundle.min.js')
+    |   
+    script.
+      $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+      });
