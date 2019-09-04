@@ -54,8 +54,69 @@ router.get('/', function (req, res, next) {
 
 });
 
-/* TEST */
-router.get('/mytest/:id', (req, res) => {
+/* Son Kaydolan 10 Developer Listeleme Islemi */
+router.get('/last10', function (req, res, next) {
+
+    var apikey = req.headers.apikey;
+
+    apiCheck(apikey).then((data) => {
+
+        Developer.find().limit(10).sort({ createdDate: -1 }).then((developers) => {
+            res.json(req.query.name);
+        }).catch((err) => {
+            res.json(err);
+        });
+
+    }).catch((err) => {
+        res.json(err);
+    });
+
+});
+
+/* Sehre Gore Developer Listeleme Islemi */
+router.get('/city/:city_name', function (req, res, next) {
+
+    var city = req.params.city_name;
+    var apikey = req.headers.apikey;
+
+    apiCheck(apikey).then((data) => {
+
+        Developer.find(
+            {
+                city: city,
+            }).then((developers) => {
+                res.json(developers);
+            }).catch((err) => {
+                res.json(err);
+            });
+
+    }).catch((err) => {
+        res.json(err);
+    });
+
+});
+
+/* Ise Gore Developer Listeleme Islemi */
+router.get('/job/:job_name', function (req, res, next) {
+
+    var job = req.params.job_name;
+    var apikey = req.headers.apikey;
+
+    var regexJob = new RegExp(job, 'i');
+
+        Developer.find(
+            {
+                job: regexJob,
+            }).then((developers) => {
+                res.json(developers);
+            }).catch((err) => {
+                res.json(err);
+            });
+
+});
+
+/* Developer Bulma Islemi */
+router.get('/:id', (req, res) => {
 
     var id = req.params.id;
 
@@ -106,25 +167,6 @@ router.get('/mytest/:id', (req, res) => {
     })
 });
 
-/* Developer Bulma Islemi */
-router.get('/:id', function (req, res, next) {
-
-    var id = req.params.id;
-    var apikey = req.headers.apikey;
-
-    apiCheck(apikey).then((data) => {
-
-        Developer.findById(id).then((developers) => {
-            res.json(developers);
-        }).catch((err) => {
-            res.json(err);
-        });
-
-    }).catch((err) => {
-        res.json(err);
-    });
-
-});
 
 /* Developer Ekleme Islemi */
 router.post("/", upload.single('file'), function (req, res, next) {
@@ -198,33 +240,33 @@ router.put("/:id", upload.single('file'), function (req, res, next) {
                         console.log(err);
                     });
                 }
-                data.name= req.body.name;
-                data.surname= req.body.surname;
-                data.job= req.body.job;
-                data.description= req.body.description;
-                data.photo= myWebsiteData.my_website_name + 'developerimages/' + req.file.filename;
+                data.name = req.body.name;
+                data.surname = req.body.surname;
+                data.job = req.body.job;
+                data.description = req.body.description;
+                data.photo = myWebsiteData.my_website_name + 'developerimages/' + req.file.filename;
 
-                data.mail= req.body.mail;
-                data.phone= req.body.phone;
+                data.mail = req.body.mail;
+                data.phone = req.body.phone;
 
-                data.country= req.body.country;
-                data.city= req.body.city;
-                data.address= req.body.address;
+                data.country = req.body.country;
+                data.city = req.body.city;
+                data.address = req.body.address;
 
-                data.mediaWebsite= req.body.mediaWebsite;
-                data.mediaGithub= req.body.mediaGithub;
-                data.mediaLinkedin= req.body.mediaLinkedin;
-                data.mediaMedium= req.body.mediaMedium;
+                data.mediaWebsite = req.body.mediaWebsite;
+                data.mediaGithub = req.body.mediaGithub;
+                data.mediaLinkedin = req.body.mediaLinkedin;
+                data.mediaMedium = req.body.mediaMedium;
 
-                data.developerSkills= req.body.developerSkills;
-                data.developerAreas= req.body.developerAreas;
+                data.developerSkills = req.body.developerSkills;
+                data.developerAreas = req.body.developerAreas;
 
-                data.username= req.body.username;
-                data.password= req.body.password;
-                data.isConfirm= req.body.isConfirm;
+                data.username = req.body.username;
+                data.password = req.body.password;
+                data.isConfirm = req.body.isConfirm;
 
-                data.createdDate= req.body.createdDate;
-                data.lastLoginDate= req.body.lastLoginDate;
+                data.createdDate = req.body.createdDate;
+                data.lastLoginDate = req.body.lastLoginDate;
 
 
                 data.save().then((data) => {
