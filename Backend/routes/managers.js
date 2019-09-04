@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
     var apikey = req.headers.apikey;
 
     apiCheck(apikey).then((data) => {
-        
+
         Manager.find().then((managers) => {
             res.json(managers);
         }).catch((err) => {
@@ -34,7 +34,7 @@ router.get('/:id', function (req, res, next) {
     var apikey = req.headers.apikey;
 
     apiCheck(apikey).then((data) => {
-        
+
         Manager.findById(id).then((manager) => {
             res.json(manager);
         }).catch((err) => {
@@ -53,7 +53,7 @@ router.post("/", function (req, res, next) {
     var apikey = req.headers.apikey;
 
     apiCheck(apikey).then((data) => {
-        
+
         new Manager({
             name: req.body.name,
             surname: req.body.surname,
@@ -85,7 +85,7 @@ router.put("/:id", function (req, res, next) {
     var apikey = req.headers.apikey;
 
     apiCheck(apikey).then((data) => {
-        
+
         Manager.findByIdAndUpdate({ "_id": id }, req.body).then((newManager) => {
             res.json("Güncelleme İşlemi Başarılı.");
         }).catch((err) => {
@@ -105,11 +105,41 @@ router.delete("/:id", function (req, res, next) {
     var apikey = req.headers.apikey;
 
     apiCheck(apikey).then((data) => {
-        
+
         Manager.findByIdAndRemove(id).then(() => {
             res.json("Silme İşlemi Başarılı.");
         }).catch((err) => {
             res.json("Silme İşleminde Hata Oluştu.");
+        });
+
+    }).catch((err) => {
+        res.json(err);
+    });
+
+});
+
+/* Manager Ekleme Islemi */
+router.post("/login", function (req, res, next) {
+
+    var apikey = req.headers.apikey;
+
+    username = req.body.username;
+    password = req.body.password;
+
+    apiCheck(apikey).then((data) => {
+
+        Manager.find({username: username}).then((manager) => {
+            if(manager.length == 0){
+                res.json("Sistemde Bu Kullanıcı Adında Birisi Yok.");
+            }else{
+                if(manager[0].password === password){
+                    res.json(manager)
+                }else{
+                    res.json("Yanlış Şifre Girdiniz.");
+                }
+            }
+        }).catch((err) => {
+            res.json(err);
         });
 
     }).catch((err) => {
