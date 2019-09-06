@@ -12,38 +12,60 @@ export default class Header extends Component {
 
   render() {
     return (
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Navbar.Brand href="#home">
-          <img
-            alt=""
-            src="https://react-bootstrap.github.io/logo.svg"
-            width="30"
-            height="30"
-            className="d-inline-block align-top"
-          />
-          {' Yazılımcı Bul '}
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="mr-auto">
-            <Nav.Link href="#home">Anasayfa</Nav.Link>
-            <Nav.Link href="#link">Nedir</Nav.Link>
-            <Nav.Link href="#link">Keşfet</Nav.Link>
-            <Nav.Link href="#link">İletişim</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-            </NavDropdown>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#home">Üye Ol</Nav.Link>
-            <Nav.Link href="#link">Giriş Yap</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Navbar>
+      <div>
+        <div class="site-mobile-menu">
+          <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+              <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+          </div>
+          <div class="site-mobile-menu-body"></div>
+        </div>
+
+        <header class="site-navbar py-2 bg-white" role="banner">
+
+          <div class="container">
+            <div class="row align-items-center">
+
+              <div class="col-11 col-xl-3">
+                <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">Yazılımcı Bul</a></h1>
+              </div>
+              <div class="col-12 col-md-9 d-none d-xl-block">
+                <nav class="site-navigation position-relative text-right" role="navigation">
+
+                  <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                    <li class="active"><a href="index.html"><span>Anasayfa</span></a></li>
+                    <li><a href="listings.html"><span>Keşfet</span></a></li>
+                    <li><a href="listings.html"><span>Yazılımcılar</span></a></li>
+                    <li class="has-children">
+                      <a href="about.html"><span>Nedir</span></a>
+                      <ul class="dropdown">
+                        <li><a href="#">Nedir</a></li>
+                        <li><a href="#">Biz Kimiz</a></li>
+                        <li><a href="#">Kaynak Kodlar</a></li>
+                        <li><a href="#">S.S.S</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="blog.html"><span>Blog</span></a></li>
+                    <li><a href="contact.html"><span>İletişim</span></a></li>
+                  </ul>
+                </nav>
+              </div>
+
+
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style={{position: "relative",top: "3px"}}>
+                <a href="#" class="site-menu-toggle js-menu-toggle text-black">
+                  <span class="icon-menu h3"></span>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </header>
+      </div>
     )
   }
 }

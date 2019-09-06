@@ -1,10 +1,4 @@
 import React, { Component } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-import {
-  Jumbotron,
-  Container,
-} from 'react-bootstrap';
 
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
@@ -15,11 +9,14 @@ class App extends Component {
   render() {
     return (
       <div className={App}>
-        <Header />
 
-        <Home />
+        <div class="site-wrap">
+          <Header />
 
-        <Footer />
+          <Home />
+
+          <Footer />
+        </div>
 
       </div>
     );

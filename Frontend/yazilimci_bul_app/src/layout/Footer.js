@@ -12,36 +12,61 @@ export default class Footer extends Component {
     render() {
         return (
             <div>
-                <br />
-                <Card border="secondary" className="text-center">
-                    <Card.Body>
-                        <Container>
-                            <Row>
-                                <Col xs={4}>
-                                    <p>Sayfalar</p>
-                                    <hr />
-                                    <a href="">Nedir</a> <br />
-                                    <a href="">Biz Kimiz</a> <br />
-                                    <a href="">İletişim</a> <br />
-                                </Col>
-                                <Col xs={4}>
-                                    <p>Keşfet</p>
-                                    <hr />
-                                    <a href="">İsme Göre</a> <br />
-                                    <a href="">Teknolojiye Göre</a> <br />
-                                    <a href="">Şehre Göre</a> <br />
-                                </Col>
-                                <Col xs={4}>
-                                    <p>İletişim</p>
-                                    <hr />
-                                    Mail: bilgi@yazilimcibul.com<br />
-                                    Github: github.com/berkekurnaz/yazilimcibul<br />
-                                </Col>
-                            </Row>
-                        </Container>
-                    </Card.Body>
-                    <Card.Footer className="text-muted">Yazılımcı Bul Açık Kaynaklı Bir Projedir</Card.Footer>
-                </Card>
+                <footer class="site-footer">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h2 class="footer-heading mb-4">Quick Links</h2>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="#">Testimonials</a></li>
+                                            <li><a href="#">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h2 class="footer-heading mb-4">Products</h2>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="#">Testimonials</a></li>
+                                            <li><a href="#">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h2 class="footer-heading mb-4">Features</h2>
+                                        <ul class="list-unstyled">
+                                            <li><a href="#">About Us</a></li>
+                                            <li><a href="#">Services</a></li>
+                                            <li><a href="#">Testimonials</a></li>
+                                            <li><a href="#">Contact Us</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h2 class="footer-heading mb-4">Follow Us</h2>
+                                        <a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
+                                        <a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
+                                        <a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
+                                        <a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <h2 class="footer-heading mb-4">Subscribe Newsletter</h2>
+                                <form action="#" method="post">
+                                    <div class="input-group mb-3">
+                                        <input type="text" class="form-control border-secondary text-white bg-transparent" placeholder="Enter Email" aria-label="Enter Email" aria-describedby="button-addon2" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary text-white" type="button" id="button-addon2">Send</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
             </div>
         )
     }
