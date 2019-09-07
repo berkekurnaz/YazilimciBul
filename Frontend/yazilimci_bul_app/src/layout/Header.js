@@ -34,9 +34,9 @@ export default class Header extends Component {
                 <nav class="site-navigation position-relative text-right" role="navigation">
 
                   <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                    <li class="active"><a href="index.html"><span>Anasayfa</span></a></li>
-                    <li><a href="listings.html"><span>Keşfet</span></a></li>
-                    <li><a href="listings.html"><span>Yazılımcılar</span></a></li>
+                    <li><a href="/"><span>Anasayfa</span></a></li>
+                    <li ><a href="/explore"><span>Keşfet</span></a></li>
+                    <li><a href="/developers"><span>Yazılımcılar</span></a></li>
                     <li class="has-children">
                       <a href="about.html"><span>Nedir</span></a>
                       <ul class="dropdown">
@@ -47,7 +47,7 @@ export default class Header extends Component {
                       </ul>
                     </li>
                     <li><a href="blog.html"><span>Blog</span></a></li>
-                    <li><a href="contact.html"><span>İletişim</span></a></li>
+                    <li><a href="/login"><span>Giriş Yap</span></a></li>
                   </ul>
                 </nav>
               </div>
