@@ -1,21 +1,42 @@
 import React, { Component } from 'react'
-
+import axios from "axios";
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { HashLoader } from 'react-spinners';
 
 import {
     fetchDevelopers,
 } from '../../actions/developersAction';
+
 import DevelopersList from '../DevelopersList';
 
 class Developers extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            developers: [],
+            loading: false,
+        }
+    }
+
     static propTypes = {
-        movies: PropTypes.object.isRequired,
+        developers: PropTypes.array.isRequired,
     };
 
     componentDidMount() {
-        this.props.fetchDevelopers();
+        const headers = {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            'apikey': 'myapikey18812019',
+        };
+        this.setState({ loading: true }, () => {
+            axios.get('http://localhost:3000/developers', { headers })
+                .then(result => this.setState({
+                    loading: false,
+                    developers: [...result.data],
+                }));
+        });
+
     }
 
     render() {
@@ -26,8 +47,18 @@ class Developers extends Component {
                         <div class="row">
                             <div class="col-lg-8">
 
-                                <DevelopersList
-                                    developers={this.props.developers} />
+                                {this.state.loading
+                                    ?
+                                    <HashLoader
+                                        size={40}
+                                        color={'#36bdb3'}
+                                        loading={this.state.loading}
+                                    />
+                                    :
+                                    <DevelopersList
+                                        developers={this.state.developers}
+                                    />}
+
 
 
                                 <div class="col-12 mt-5 text-center">

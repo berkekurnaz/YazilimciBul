@@ -1,12 +1,4 @@
 import React, { Component } from 'react'
-import {
-  Navbar,
-  Nav,
-  NavDropdown,
-  Form,
-  FormControl,
-  Button
-} from 'react-bootstrap';
 
 export default class Header extends Component {
 

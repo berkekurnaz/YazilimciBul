@@ -15,7 +15,7 @@ export function fetchDevelopers(){
 		dispatch({
 			type: "FETCH_DEVELOPERS",
 			payload: axios.get(`${API_BASE}/developers`, {headers})
-				.then(result => result.data.developers)
+				.then(result => result.data)
 		})
 	}
 }

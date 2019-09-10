@@ -4,41 +4,41 @@ import PropTypes from 'prop-types';
 import DeveloperCard from "./DeveloperCard";
 
 const DevelopersList = ({ developers }) => {
-    
-    const emptyMessage = (
+
+	const emptyMessage = (
 		<p>There are no movies yet.</p>
 	);
 
 	const developersList = (
-		<div>
+		developers.map(developer =>
+			<div class="d-block d-md-flex listing-horizontal">
 
-			{
-				developers.error.response
-					? <h3>Error retrieving data!</h3>
-					:
-					<div>
-                        {
-							developers.map(developer =>
-								<DeveloperCard
-									key={developer._id}
-									developer={developer} />)
-						}
-                    </div>
-			}
-		</div>
+				<a href="#" class="img d-block" style={{ backgroundImage: `url(${developer.photo})` }}>
+				</a>
+
+				<div class="lh-content">
+					<a href="#" class="bookmark"><span class="icon-heart"></span></a>
+					<h3><a href="#">{developer.name + " " + developer.surname}</a></h3>
+					<p>{developer.name}</p>
+					<p>{developer.job}</p>
+					<p>
+						Veritabanı Yöneticisi, Backend Developer, Frontend Developer
+					</p>
+				</div>
+
+			</div>
+		)
 	);
 
 	return (
 		<div>
-			{ developers.length === 0 ? emptyMessage : developersList }
+			{developers.length === 0 ? emptyMessage : developersList}
 		</div>
 	);
 };
 
 DevelopersList.propTypes = {
-	developers: PropTypes.shape({
-		developersList: PropTypes.array.isRequired
-	}).isRequired
+	developers: PropTypes.array.isRequired
 };
 
 export default DevelopersList;

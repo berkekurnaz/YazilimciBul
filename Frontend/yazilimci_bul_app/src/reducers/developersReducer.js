@@ -6,7 +6,7 @@ import {
 
 const initialState = {
 	fetching: false,
-	developersList: [],
+	developers: [],
 	error: {}
 };
 
@@ -21,7 +21,7 @@ export default (state = initialState, action) => {
 		case FETCH_DEVELOPERS_FULFILLED:
 			return {
 				...state,
-				developersList: action.payload,
+				developers: action.payload,
 				fetching: false
 			};
 		case FETCH_DEVELOPERS_REJECTED:
