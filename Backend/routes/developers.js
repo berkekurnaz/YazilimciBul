@@ -42,7 +42,7 @@ router.get('/', function (req, res, next) {
 
     apiCheck(apikey).then((data) => {
 
-        Developer.find().then((developers) => {
+        Developer.find().sort({ createdDate: -1 }).then((developers) => {
             res.json(developers);
         }).catch((err) => {
             res.json(err);
@@ -104,14 +104,52 @@ router.get('/job/:job_name', function (req, res, next) {
 
     var regexJob = new RegExp(job, 'i');
 
+    Developer.find(
+        {
+            job: regexJob,
+        }).then((developers) => {
+            res.json(developers);
+        }).catch((err) => {
+            res.json(err);
+        });
+
+});
+
+/* Ise Gore Developer Listeleme Islemi */
+router.get('/query', function (req, res, next) {
+
+    var name = req.query.name;
+    var surname = req.query.surname;
+    var category = req.query.category;
+    var skills = req.query.skills;
+    var city = req.query.city;
+
+    var apikey = req.headers.apikey;
+
+    var regexName = new RegExp(name, 'i');
+    var regexSurname = new RegExp(surname, 'i');
+    var regexCategory = new RegExp(category, 'i');
+    var regexSkills = new RegExp(skills, 'i');
+    var regexCity = new RegExp(city, 'i');
+
+    apiCheck(apikey).then((data) => {
+
         Developer.find(
             {
-                job: regexJob,
+                name: regexName,
+                surname: regexSurname,
+                developerAreas: regexCategory,
+                developerSkills: regexSkills,
+                city: regexCity,
             }).then((developers) => {
                 res.json(developers);
             }).catch((err) => {
                 res.json(err);
             });
+
+    }).catch((err) => {
+        res.json(err);
+    });
 
 });
 
@@ -209,7 +247,6 @@ router.post("/", upload.single('file'), function (req, res, next) {
             password: req.body.password,
             isConfirm: req.body.isConfirm,
 
-            createdDate: req.body.createdDate,
             lastLoginDate: req.body.lastLoginDate,
         }).save().then(() => {
             res.json("Kaydetme İşlemi Başarılı.");
@@ -265,7 +302,6 @@ router.put("/:id", upload.single('file'), function (req, res, next) {
                 data.password = req.body.password;
                 data.isConfirm = req.body.isConfirm;
 
-                data.createdDate = req.body.createdDate;
                 data.lastLoginDate = req.body.lastLoginDate;
 
 

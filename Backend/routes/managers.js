@@ -14,7 +14,7 @@ router.get('/', function (req, res, next) {
 
     apiCheck(apikey).then((data) => {
 
-        Manager.find().then((managers) => {
+        Manager.find().sort({createdDate: -1}).then((managers) => {
             res.json(managers);
         }).catch((err) => {
             res.json(err);

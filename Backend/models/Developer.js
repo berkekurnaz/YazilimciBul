@@ -28,7 +28,10 @@ var developerSchema = new Schema({
     password: String,
     isConfirm: Boolean,
 
-    createdDate: String,
+    createdDate: {
+        type: Date,
+        default: Date.now
+    },
     lastLoginDate: String,
 });
 

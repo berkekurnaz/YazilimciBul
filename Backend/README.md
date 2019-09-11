@@ -11,6 +11,7 @@ Bütün Endpoint'ler İçin `Headers` altında `apikey` tanımlaması yapılmak 
 Route| Http Verb | Post Body | Açıklama
 :--- | :---: | :---: | :---:
 /developers | `GET` | Empty | Bütün Yazılımcıları Getirmek
+/developers/query | `GET` | name,surname,city,category,skills | Koşullu Yazılımcı Getirmek (Query İle)
 /developers/last10 | `GET` | Empty | Son Kaydolan 10 Yazılımcıyı Getirmek
 /developers/:id | `GET` | Empty | Tek Bir Yazılımcı Getirmek
 /developers/city/:city_name | `GET` | Empty | Sehre Gore Yazılımcıları Getirmek
