@@ -115,7 +115,7 @@ router.get('/job/:job_name', function (req, res, next) {
 
 });
 
-/* Award Bulma Islemi */
+/* Developer Login Islemi */
 router.post('/login', function (req, res, next) {
 
     var bodyUsername = req.body.username;
