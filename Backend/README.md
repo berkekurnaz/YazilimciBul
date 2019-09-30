@@ -32,6 +32,18 @@ Route| Http Verb | Post Body | Açıklama
 /managers/:id | `PUT` | Manager Model | Yönetici Güncellemek
 /managers/:id | `DELETE` | Empty | Yönetici Silmek
 
+### Users
+**User Model:** name, surname, job, photo, description, username, password, mail, phone, country, city, address <br/>
+
+Route| Http Verb | Post Body | Açıklama
+:--- | :---: | :---: | :---:
+/users | `GET` | Empty | Bütün Üyeleri Getirmek
+/users/:id | `GET` | Empty | Tek Bir Üye Getirmek
+/users| `POST` | Manager Model | Yeni Üye Oluşturmak
+/users/login | `POST` | username,password | Üye Giriş Yapmak
+/users/:id | `PUT` | Manager Model | Üye Güncellemek
+/users/:id | `DELETE` | Empty | Üye Silmek
+
 ### Educations
 **Education Model:** developer_id, schoolName, department, degree, startYear, endYear, description. <br/>
 
