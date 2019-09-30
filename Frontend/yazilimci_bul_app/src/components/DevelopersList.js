@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import DeveloperCard from "./DeveloperCard";
+import {Link} from "react-router-dom";
+
+
 
 const DevelopersList = ({ developers }) => {
 
@@ -13,16 +15,14 @@ const DevelopersList = ({ developers }) => {
 		developers.map(developer =>
 			<div class="d-block d-md-flex listing-horizontal">
 
-				<a href="#" class="img d-block" style={{ backgroundImage: `url(${developer.photo})` }}>
-				</a>
-
+				<Link to={`/developer/${developer._id}`} class="img d-block" style={{ backgroundImage: `url(${developer.photo})` }}></Link>
+				
 				<div class="lh-content">
-					<a href="#" class="bookmark"><span class="icon-heart"></span></a>
-					<h3><a href="#">{developer.name + " " + developer.surname}</a></h3>
-					<p>{developer.name}</p>
+					<Link to={`/developer/${developer._id}`} class="bookmark"><span class="icon-heart"></span></Link>
+					<h3><Link to={`/developer/${developer._id}`}>{developer.name + " " + developer.surname}</Link></h3>
 					<p>{developer.job}</p>
 					<p>
-						Veritabanı Yöneticisi, Backend Developer, Frontend Developer
+						{developer.developerAreas}
 					</p>
 				</div>
 

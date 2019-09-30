@@ -17,6 +17,7 @@ Route| Http Verb | Post Body | Açıklama
 /developers/city/:city_name | `GET` | Empty | Sehre Gore Yazılımcıları Getirmek
 /developers/job/:job_name | `GET` | Empty | Ise Gore Yazılımcıları Getirmek
 /developers| `POST` | Developer Model | Yeni Yazılımcı Oluşturmak
+/developers/login | `POST` | username,password | Yazılımcı Giriş Yapmak
 /developers/:id | `PUT` | Developer Model | Yazılımcı Güncellemek
 /developers/:id | `DELETE` | Empty | Yazılımcı Silmek
 

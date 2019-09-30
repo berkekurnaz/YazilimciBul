@@ -7,6 +7,7 @@ import Footer from "./layout/Footer";
 import Home from "./components/pages/Home";
 import Explore from "./components/pages/Explore";
 import Developers from "./components/pages/Developers";
+import Developer from "./components/pages/Developer";
 import Login from "./components/pages/Login";
 
 class App extends Component {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path='/' component={Home}></Route>
           <Route exact path='/explore' component={Explore}></Route>
           <Route exact path='/developers' component={Developers}></Route>
+          <Route exact path='/developer/:id' component={Developer}></Route>
           <Route exact path='/login' component={Login}></Route>
 
           <Footer />

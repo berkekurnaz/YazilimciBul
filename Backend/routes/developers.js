@@ -115,6 +115,27 @@ router.get('/job/:job_name', function (req, res, next) {
 
 });
 
+/* Award Bulma Islemi */
+router.post('/login', function (req, res, next) {
+
+    var bodyUsername = req.body.username;
+    var bodyPassword = req.body.password;
+    var apikey = req.headers.apikey;
+
+    apiCheck(apikey).then((data) => {
+
+        Developer.find({username: bodyUsername, password: bodyPassword}).then((developer) => {
+            res.json(developer);
+        }).catch((err) => {
+            res.json(err);
+        });
+
+    }).catch((err) => {
+        res.json(err);
+    });
+
+});
+
 /* Ise Gore Developer Listeleme Islemi */
 router.get('/query', function (req, res, next) {
 
